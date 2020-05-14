@@ -26,25 +26,25 @@ public class RevisionNotesArrayAdapter extends ArrayAdapter<Note> {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		public View getView(int position, View convertView, ViewGroup parent) {
+			LayoutInflater inflater = (LayoutInflater) context
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-		View rowView = inflater.inflate(R.layout.row, parent, false);
+			View rowView = inflater.inflate(R.layout.row, parent, false);
 
-		//Match the UI components with Java variables
-		tv = (TextView) rowView.findViewById(R.id.textViewNote);
-		iv1 = (ImageView) rowView.findViewById(R.id.imageView1star);
-		iv2 = (ImageView) rowView.findViewById(R.id.imageView2star);
-		iv3 = (ImageView) rowView.findViewById(R.id.imageView3star);
-		iv4 = (ImageView) rowView.findViewById(R.id.imageView4star);
-		iv5 = (ImageView) rowView.findViewById(R.id.imageView5star);
+			//Match the UI components with Java variables
+			tv = (TextView) rowView.findViewById(R.id.textViewNote);
+			iv1 = (ImageView) rowView.findViewById(R.id.imageView1star);
+			iv2 = (ImageView) rowView.findViewById(R.id.imageView2star);
+			iv3 = (ImageView) rowView.findViewById(R.id.imageView3star);
+			iv4 = (ImageView) rowView.findViewById(R.id.imageView4star);
+			iv5 = (ImageView) rowView.findViewById(R.id.imageView5star);
 
-		Note note = notes.get(position);
+			Note note = notes.get(position);
 
-		tv.setText(note.getNoteContent());
-		//Check if the property for starts >= 5, if so, "light" up the stars
-		int stars = Integer.parseInt(note.getStars());
+			tv.setText(note.getNoteContent());
+			//Check if the property for starts >= 5, if so, "light" up the stars
+			int stars = Integer.parseInt(note.getStars());
 		if (stars == 5) {
 			iv5.setImageResource(android.R.drawable.btn_star_big_on);
 			iv4.setImageResource(android.R.drawable.btn_star_big_on);

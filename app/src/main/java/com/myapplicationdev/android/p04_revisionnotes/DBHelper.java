@@ -17,7 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	private static final String TABLE_NOTE = "note";
 	private static final String COLUMN_ID = "id";
-	private static final String COLUMN_NOTECONTNET = "noteContent";
+	private static final String COLUMN_NOTECONTENT = "noteContent";
 	private static final String COLUMN_STARS = "stars";
 
 	public DBHelper(Context context) {
@@ -29,7 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		//TODO CREATE TABLE Note
 		String createTableSql = "CREATE TABLE " + TABLE_NOTE + "("
 				+ COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-				+ COLUMN_NOTECONTNET + " TEXT,"
+				+ COLUMN_NOTECONTENT + " TEXT,"
 				+ COLUMN_STARS + " TEXT )";
 		db.execSQL(createTableSql);
 		Log.i("info", "created tables");
@@ -45,7 +45,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		//TODO insert the data into the database
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
-		values.put(COLUMN_NOTECONTNET, noteContent);
+		values.put(COLUMN_NOTECONTENT, noteContent);
 		values.put(COLUMN_STARS, stars);
 		db.insert(TABLE_NOTE, null, values);
 		db.close();
@@ -55,7 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		//TODO return records in Java objects
 		ArrayList<Note> notes = new ArrayList<Note>();
 		String selectQuery = "SELECT " + COLUMN_ID + ", "
-				+ COLUMN_NOTECONTNET + ", "
+				+ COLUMN_NOTECONTENT + ", "
 				+ COLUMN_STARS + " FROM " + TABLE_NOTE;
 
 		SQLiteDatabase db = this.getReadableDatabase();
@@ -81,7 +81,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		// Create an ArrayList that holds String objects
         ArrayList<String> notes = new ArrayList<String>();
         // Select all the notes' content
-        String selectQuery = "SELECT " + COLUMN_NOTECONTNET + " FROM " + TABLE_NOTE;
+        String selectQuery = "SELECT " + COLUMN_NOTECONTENT + " FROM " + TABLE_NOTE;
 
         // Get the instance of database to read
         SQLiteDatabase db = this.getReadableDatabase();
